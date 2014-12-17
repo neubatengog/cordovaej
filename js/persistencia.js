@@ -6,8 +6,8 @@ per.db = null;
       
 per.openDb = function() {
    if (window.navigator.simulator === true) {
-        // For debugin in simulator fallback to native SQL Lite
-        console.log("Use built in SQL Lite");
+        // Se simula para debugging
+        console.log("Preparando sqlite");
         per.db = window.openDatabase("Todo", "1.0", "Cordova Demo", 200000);
     }
     else {

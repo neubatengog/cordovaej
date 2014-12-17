@@ -32,7 +32,7 @@ var app = {
   		navigator.notification.alert("offline", null, "titulo", "salir");  	
 	},
 
-    // Update DOM on a Received Event
+    // se actualiza el dom en un evento recibido
     receivedEvent: function(id) {
        /* var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');

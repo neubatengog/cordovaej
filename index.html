@@ -24,7 +24,7 @@
                     <ul data-role="listview" data-inset="true">
                         <li><a href="#red">Conexion</a></li>
                         <li><a href="#camara">Camara</a></li>
-                        <li><a href="#eventos">Eventos (bateria)</a></li>
+                        <li><a href="#eventos">Eventos, Notificaciones</a></li>
                         <li><a href="#posicion">Posicion</a></li>
                         <li><a href="#persis">Persistencia (SQLite)</a></li>
                     </ul>
@@ -104,6 +104,14 @@
                         <ul id="bateria" data-role="listview" data-inset="true">
 
                         <ul>
+                </div>
+                <div class ="ul-content" role="main" >
+                        <div data-role="controlgroup" data-type="horizontal">
+                            <p>Notificaciones:</p>
+                            <a href="#" onclick="vibrar(); return false;" class="ui-btn">Vibrar</a>
+                            <a href="#" onclick="sonarBeep(); return false;" class="ui-btn">Beep</a>
+                            <a href="#" onclick="mostrarAlerta(); return false;" class="ui-btn">Notificacion</a>
+                        </div>
                 </div>
                 
             </div><!-- /content -->

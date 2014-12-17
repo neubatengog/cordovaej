@@ -55,3 +55,19 @@ function onBatteryStatus(info) {
 	pBateria.innerHTML = '<li><h2>Bateria</h2> carga: ' + info.level + '% cargando: ' + info.isPlugged +'</li>';
 	console.log(info.level);
  };
+
+ function vibrar() {
+        navigator.notification.vibrate(2000);
+  }
+
+ function sonarBeep() {
+        navigator.notification.beep(3);
+  } 
+
+  function mostrarAlerta() {
+        navigator.notification.alert(
+            'el mensaje!',  // message
+            'el titulo',            // title
+            'nombre boton'                  // buttonName
+        );
+    }

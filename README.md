@@ -12,4 +12,7 @@ cordovaej
 <li>cordova plugin add org.apache.cordova.camera</li>
 <li>cordova plugin add org.apache.cordova.device</li>
 <li>cordova plugin add https://github.com/brodysoft/Cordova-SQLitePlugin</li>
+<li> cordova plugin add org.apache.cordova.dialogs</li>
+<li>cordova plugin add org.apache.cordova.vibration</li>
+
 </ul>

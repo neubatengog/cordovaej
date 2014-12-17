@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="css/cordo.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    </head>
+    <body>
+<!---pagina menu principal-->
+    <div data-role="page" id="principal">
+            <div data-role="panel" id="menu" data-theme="b" data-position-fixed="true">
+                 
+            </div>
+            <div data-role="header" data-position="fixed" >
+                <a href="#menu" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-left ui-btn-icon-notext">Conf</a>
+                <h1>Cordova pruebas Api</h1> 
+            </div><!-- /header -->
+            <div data-role="content">
+                <div class ="ul-content" role="main">
+                    <ul data-role="listview" data-inset="true">
+                        <li><a href="#red">Conexion</a></li>
+                        <li><a href="#camara">Camara</a></li>
+                        <li><a href="#eventos">Eventos (bateria)</a></li>
+                        <li><a href="#posicion">Posicion</a></li>
+                        <li><a href="#persis">Persistencia (SQLite)</a></li>
+                    </ul>
+                </div><!-- /fin contenido-->
+            </div><!-- /content -->
+        
+    </div><!-- /page -->
+
+<!---/pagina menu principal -->
+
+
+
+<!---pagina de red -->
+    <div data-role="page" id="red">
+
+         <div data-role="header" >
+            <a href="#principal" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-left ui-btn-icon-notext"></a>
+                <h1>Red</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <div class ="ul-content" role="main" >
+                        <ul  id="conexion" data-role="listview" data-inset="true"> </ul>
+                </div>
+            </div><!-- /content -->
+           
+    </div><!-- /page -->
+
+<!--- /pagina red-->     
+
+
+<!---pagina de camara-->
+    <div data-role="page" id="camara">
+
+         <div data-role="header" >
+            <a href="#principal" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-left ui-btn-icon-notext"></a>
+                <h1>Camara</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <div class ="ui-content" role="main" id="imagen">
+                    <ul  data-role="listview" data-inset="true"> 
+                        <li>
+                        <a href="#myPanel"  onclick="capturarFoto();" class="ui-btn ui-btn-inline ui-corner-all ui-shadow"> <button >Capturar Foto</button></a>
+                       </li>
+                    </ul>
+                    
+                </div>
+                
+            </div><!-- /content -->
+            <div data-role="panel" id="myPanel"> 
+                    <h2>Fotografia</h2>
+                    <p> <img style="display:none;width:100px;height:150px;" id="smallImage" src="" /></p>
+            </div> 
+           
+    </div><!-- /page -->
+  
+    
+
+<!--- /pagina camara-->     
+
+<!---pagina de eventos-->
+    <div data-role="page" id="eventos">
+
+         <div data-role="header" >
+            <a href="#principal" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-left ui-btn-icon-notext"></a>
+                <h1>Eventos</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <div class ="ul-content" role="main" >
+                        <ul id="evento" data-role="listview" data-inset="true">
+
+                        </ul>
+                </div>
+                <div class ="ul-content" role="main" >
+                        <ul id="bateria" data-role="listview" data-inset="true">
+
+                        <ul>
+                </div>
+                
+            </div><!-- /content -->
+           
+    </div><!-- /page -->
+
+<!--- /pagina eventos-->     
+
+
+<!---pagina de posicion gps-->
+    <div data-role="page" id="posicion">
+
+         <div data-role="header" >
+            <a href="#principal" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-left ui-btn-icon-notext"></a>
+                <h1>Posicion</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <div class ="ul-content" role="main" >
+                        <ul id="gps" data-role="listview" data-inset="true">
+
+                        </ul>
+                </div>
+              
+                
+            </div><!-- /content -->
+           
+    </div><!-- /page -->
+
+<!--- /pagina posicion-->   
+
+<!---pagina persistencia-->
+    <div data-role="page" id="persis">
+
+         <div data-role="header" >
+            <a href="#principal" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-left ui-btn-icon-notext"></a>
+                <h1>Persistencia SQLite</h1>
+        </div><!-- /header -->
+                      <div  data-role="main" class ="ui-content">      
+                        <form >
+                        <div class="ui-field-contain">
+                                <input type="text"  id="todo" placeholder="agregar nuevo item...">
+                        </div>
+                            <button class="ui-btn ui-btn-inline" id="addButton" onclick="addTodo(); return false;">Agregar</button>
+                        </form> 
+                      </div>
+
+
+                      <div  data-role="main" class ="ui-content">
+                        
+                        <h2>Listado de items</h2> 
+                            <ul id="todoItems" data-role="listview" data-inset="true" > 
+                                            
+                            </ul>
+                      </div>
+    </div><!-- /page -->
+
+<!--- /pagina persistencia-->    
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/eventos.js"></script>
+        <script type="text/javascript" src="js/red.js"></script>
+        <script type="text/javascript" src="js/camara.js"></script>
+        <script type="text/javascript" src="js/posicion.js"></script>
+        <script type="text/javascript" src="js/persistencia.js"></script>
+
+    </body>
+</html>

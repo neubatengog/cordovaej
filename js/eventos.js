@@ -1,3 +1,4 @@
+$('#mapa').height($(window).height() - (50 + $('[data-role=header]').height() - $('[data-role=footer]').height())); 
 var app = {
     // Application Constructor
     initialize: function() {

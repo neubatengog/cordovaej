@@ -1,9 +1,12 @@
+var map;
+var marker;
 
 //Coordenadas gps
 function onRecibidas(position) {
     var element = document.getElementById('gps');
-    element.innerHTML = '<li>Latitud: '  + position.coords.latitude      + '</li>' +
-                        '<li>Longitud: ' + position.coords.longitude     + '</li>';
+    element.innerHTML = '<li><p><h1>Latitud:</h1>'+ position.coords.latitude + ' ' +
+                        '<h1>Longitud:</h1>' + position.coords.longitude     + '</p></li>';
+     actualizaMapa(position);
     //console.log('Latitud:'+ position.coords.latitude + ' Longitud:' + position.coords.longitude);
 }
 
@@ -13,6 +16,33 @@ function onError(error) {
           'mensaje: ' + error.message + '\n');
 }
 
-// Opciones: error es gatillado si no es recibido en  20 segundos una posicion.
-//
-var watchID = navigator.geolocation.watchPosition(onRecibidas, onError, { timeout: 30000 });
+function actualizaMapa(position){
+	console.log("google maps")
+	var longitud = position.coords.longitude;
+	var latitud = position.coords.latitude;
+	var latlong = new google.maps.LatLng(latitud, longitud);
+	var mapOptions = {
+		center: latlong,
+		zoom : 16
+	};
+
+	map = new google.maps.Map(document.getElementById("mapa"), mapOptions);
+	marker = new google.maps.Marker({
+              position: latlong,
+              map: map,
+              title: 'yo estoy aqui'
+          });
+	
+}
+
+function cambiarPosicionMarcador(position) {
+     var latlong=new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     marker.setPosition(latlong);
+     console.log(latlong);
+}
+
+
+navigator.geolocation.getCurrentPosition(actualizaMapa, onError);
+var watchID = navigator.geolocation.watchPosition(cambiarPosicionMarcador, onError, { timeout: 60000 });
+
+

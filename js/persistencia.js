@@ -7,7 +7,7 @@ per.db = null;
 per.openDb = function() {
    if (window.navigator.simulator === true) {
         // Se simula para debugging
-        console.log("Preparando sqlite");
+        console.log("===========================> Preparando sqlite");
         per.db = window.openDatabase("Todo", "1.0", "Cordova Demo", 200000);
     }
     else {
@@ -34,7 +34,7 @@ per.addTodo = function(todoText) {
 }
       
 per.onError = function(tx, e) {
-    console.log("Error: " + e.message);
+    console.log("Error: ==========================>" + e.message);
 } 
       
 per.onSuccess = function(tx, r) {
@@ -62,10 +62,7 @@ per.refresh = function() {
         for (var i = 0; i < rs.rows.length; i++) {
             rowOutput += renderTodo(rs.rows.item(i));
         }
-        
         todoItems.innerHTML =  rowOutput ;
-        console.log(todoItems.innerHTML);
-
     }
     
     var db = per.db;

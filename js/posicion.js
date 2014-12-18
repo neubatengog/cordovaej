@@ -12,8 +12,11 @@ function onRecibidas(position) {
 
 //Error recibido de posicion 
 function onError(error) {
-    alert('codigo: '    + error.code    + '\n' +
-          'mensaje: ' + error.message + '\n');
+	navigator.notification.alert(
+            'mensaje: ' + error.message + '\n',  // mensaje
+            'codigo: '    + error.code    + '\n' ,            // titulo
+            'error'                  // buttonName
+        );
 }
 
 function actualizaMapa(position){
@@ -23,16 +26,16 @@ function actualizaMapa(position){
 	var latlong = new google.maps.LatLng(latitud, longitud);
 	var mapOptions = {
 		center: latlong,
-		zoom : 16
+		zoom : 18
 	};
 
 	map = new google.maps.Map(document.getElementById("mapa"), mapOptions);
 	marker = new google.maps.Marker({
-              position: latlong,
-              map: map,
-              title: 'yo estoy aqui'
-          });
-	
+            position: latlong,
+            map: map,
+           title: 'yo estoy aqui'
+     });
+		
 }
 
 function cambiarPosicionMarcador(position) {
@@ -41,8 +44,8 @@ function cambiarPosicionMarcador(position) {
      console.log(latlong);
 }
 
-
 navigator.geolocation.getCurrentPosition(actualizaMapa, onError);
 var watchID = navigator.geolocation.watchPosition(cambiarPosicionMarcador, onError, { timeout: 60000 });
+
 
 

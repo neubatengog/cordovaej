@@ -18,12 +18,20 @@ function onPhotoDataSuccess(imageData) {
 function capturarFoto() {
     // Tomar foto usando la cámara del dispositivo y devolviendo una imagen en formato 
     // string de base64 encodificado
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-     destinationType: navigator.camera.DestinationType.DATA_URL });
+    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { 
+        quality: 50,
+        correctOrientation: true,
+        destinationType: navigator.camera.DestinationType.DATA_URL 
+    });
 }
  
 //En caso de que exista un fallo durante la llamada de la interfaz con la cámara del dispositivo 
 //Se dispara el llamado a esta función 
 function onFail(message) {
-   alert('Error debido a: ' + message);
+   navigator.notification.alert(
+            message,  
+            'Error',         
+            'error en camara'                 
+        );
 }
+

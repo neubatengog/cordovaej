@@ -1,4 +1,5 @@
 $('#mapa').height($(window).height() - (50 + $('[data-role=header]').height() - $('[data-role=footer]').height())); 
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -9,11 +10,9 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         //Se mapea el evento online con la función miembro onOnline
-		document.addEventListener('online', this.onOnline, false);
-		//Se mapea el evento offline con la función miembro onOffline
-		document.addEventListener('offline', this.onOffline, false);
-		
-		
+		    document.addEventListener('online', this.onOnline, false);
+		    //Se mapea el evento offline con la función miembro onOffline
+		    document.addEventListener('offline', this.onOffline, false);
     },
    
     onDeviceReady: function() {
@@ -25,36 +24,56 @@ var app = {
    		//Se captura y gestiona el evento online
    		var pConectionType = document.getElementById('evento');
    		pConectionType.innerHTML = '<li><h2>Estado:</h2>Usted esta Online</li>';
-	},
-	onOffline: function() {
+      checkConnection();
+	 },
+
+  	onOffline: function() {
   		//Se captura y gestiona el evento offline
   		var pConectionType = document.getElementById('evento');
   		pConectionType.innerHTML = '<li data-icon="plus"><h2>Estado:</h2>Usted esta Offline</li>'; 
-  		navigator.notification.alert("offline", null, "titulo", "salir");  	
-	},
+  		navigator.notification.alert("offline", null, "titulo", "salir");  
+      checkConnection();	
+	 },
 
-    // se actualiza el dom en un evento recibido
+    // para efectos de log
     receivedEvent: function(id) {
-       /* var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');*/
-
-        console.log('Evento recibido: ' + id);
-       
+      console.log('===========================>Evento recibido: ' + id);   
     }
-
 };
 
 
 app.initialize();
 
+function checkConnection() {
+    //Capturamos los tipos de conexión detectables 
+    var states = {};
+        states[Connection.UNKNOWN]  = 'Conexión desconocida';
+        states[Connection.ETHERNET] = 'Conexión Ethernet';
+        states[Connection.WIFI]     = 'Conexión WiFi';
+        states[Connection.CELL_2G]  = 'Conexión Cell 2G';
+        states[Connection.CELL_3G]  = 'Conexión Cell 3G';
+        states[Connection.CELL_4G]  = 'Conexión Cell 4G';
+        states[Connection.CELL]     = 'Conexión Generica de Cell';
+        states[Connection.NONE]     = 'No hay Conexión de red';
+    
+    //Obtenemos el Estado de la conexión
+    var networkState = navigator.connection.type;
+    
+    //Lanzamos un mensaje de alerta al usuario indicando el tipo de Conexión
+    //detectado
+    //alert('Tipo de Connexion: ' + states[networkState]);
+    
+    //Actualizamos el DOM para actualizar el texto del parrafo 
+    //dentro de la sección con el id = "conexion"
+    var pConectionType = document.getElementById('conexion');
+    pConectionType.innerHTML = '<li>' + states[networkState] + '</li>';
+}
+
+
 function onBatteryStatus(info) {
    	var pBateria = document.getElementById('bateria');
 	pBateria.innerHTML = '<li><h2>Bateria</h2> carga: ' + info.level + '% cargando: ' + info.isPlugged +'</li>';
-	console.log(info.level);
+	console.log("===========================>" + info.level);
  };
 
  function vibrar() {
@@ -69,6 +88,6 @@ function onBatteryStatus(info) {
         navigator.notification.alert(
             'el mensaje!',  // message
             'el titulo',            // title
-            'nombre boton'                  // buttonName
+            'nombre ventana'                  // buttonName
         );
-    }
+  }

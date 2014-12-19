@@ -23,15 +23,15 @@ var app = {
     onOnline: function() {
    		//Se captura y gestiona el evento online
    		$('#evento').html( '<li><h2>Estado:</h2>Usted esta Online</li>');
-      $('#evento:visible').listview('refresh');
+      $('ul#evento').listview('refresh');
       checkConnection();
 	 },
 
   	onOffline: function() {
   		//Se captura y gestiona el evento offline
-      $('#evento').html('<li data-icon="plus"><h2>Estado:</h2>Usted esta Offline</li>'); 
-  		navigator.notification.alert("offline", null, "titulo", "salir");
-      $('#evento:visible').listview('refresh');  
+      navigator.notification.alert("offline", null, "titulo", "salir");
+      $('#evento').html('<li data-icon="plus"><h2>Estado:</h2>Usted esta Offline</li>');   		
+      $('ul#evento').listview('refresh');  
       checkConnection();	
 	 },
 
@@ -59,21 +59,16 @@ function checkConnection() {
     
     //Obtenemos el Estado de la conexión
     var networkState = navigator.connection.type;
-    
-    //Lanzamos un mensaje de alerta al usuario indicando el tipo de Conexión
-    //detectado
-    //alert('Tipo de Connexion: ' + states[networkState]);
-    
     //Actualizamos el DOM para actualizar el texto del parrafo 
     //dentro de la sección con el id = "conexion"
-    $('#conexion').html( '<li> <h3>' + states[networkState] + ' </h3></li>' );
-    $('#conexion:visible').listview('refresh');
+    $('#conexion').html( '<li>' + states[networkState] + '</li>' );
+    $('ul#conexion').listview("refresh");
 }
 
 
 function onBatteryStatus(info) {
 	$('#bateria').html('<li><h2>Bateria</h2> carga: ' + info.level + '% cargando: ' + info.isPlugged +'</li>');
-  $('#bateria:visible').listview('refresh');
+  $('ul#bateria').listview("refresh");
 	//console.log("===========================>" + info.level);
  };
 
@@ -88,7 +83,7 @@ function onBatteryStatus(info) {
   function mostrarAlerta() {
         navigator.notification.alert(
             'el mensaje!',  // message
-            'el titulo',            // title
-            'nombre ventana'                  // buttonName
+            'el titulo',    // title
+            'nombre ventana' // buttonName
         );
   }

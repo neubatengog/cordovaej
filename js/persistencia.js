@@ -62,7 +62,7 @@ per.refresh = function() {
             rowOutput += renderTodo(rs.rows.item(i));
         }
         $('#todoItems').html( rowOutput );
-        $('#todoItems:visible').listview('refresh');
+        $('ul#todoItems').listview('refresh');
     }
     
     var db = per.db;

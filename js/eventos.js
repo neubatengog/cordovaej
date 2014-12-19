@@ -22,16 +22,14 @@ var app = {
     
     onOnline: function() {
    		//Se captura y gestiona el evento online
-   		var pConectionType = document.getElementById('evento');
-   		pConectionType.innerHTML = '<li><h2>Estado:</h2>Usted esta Online</li>';
+   		$('#evento').html( '<li><h2>Estado:</h2>Usted esta Online</li>');
       $('#evento:visible').listview('refresh');
       checkConnection();
 	 },
 
   	onOffline: function() {
   		//Se captura y gestiona el evento offline
-  		var pConectionType = document.getElementById('evento');
-  		pConectionType.innerHTML = '<li data-icon="plus"><h2>Estado:</h2>Usted esta Offline</li>'; 
+      $('#evento').html('<li data-icon="plus"><h2>Estado:</h2>Usted esta Offline</li>'); 
   		navigator.notification.alert("offline", null, "titulo", "salir");
       $('#evento:visible').listview('refresh');  
       checkConnection();	
@@ -68,15 +66,13 @@ function checkConnection() {
     
     //Actualizamos el DOM para actualizar el texto del parrafo 
     //dentro de la sección con el id = "conexion"
-    var pConectionType = document.getElementById('conexion');
-    pConectionType.innerHTML = '<li>' + states[networkState] + '</li>';
+    $('#conexion').html( '<li> <h3>' + states[networkState] + ' </h3></li>' );
     $('#conexion:visible').listview('refresh');
 }
 
 
 function onBatteryStatus(info) {
-   	var pBateria = document.getElementById('bateria');
-	pBateria.innerHTML = '<li><h2>Bateria</h2> carga: ' + info.level + '% cargando: ' + info.isPlugged +'</li>';
+	$('#bateria').html('<li><h2>Bateria</h2> carga: ' + info.level + '% cargando: ' + info.isPlugged +'</li>');
   $('#bateria:visible').listview('refresh');
 	//console.log("===========================>" + info.level);
  };

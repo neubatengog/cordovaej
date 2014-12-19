@@ -58,11 +58,10 @@ per.refresh = function() {
     
     var render = function (tx, rs) {
         var rowOutput = "";
-        var todoItems = document.getElementById("todoItems");
         for (var i = 0; i < rs.rows.length; i++) {
             rowOutput += renderTodo(rs.rows.item(i));
         }
-        todoItems.innerHTML =  rowOutput ;
+        $('#todoItems').html( rowOutput );
         $('#todoItems:visible').listview('refresh');
     }
     
@@ -82,7 +81,6 @@ function init() {
 }
       
 function addTodo() {
-    var todo = document.getElementById("todo");
-    per.addTodo(todo.value);
-    todo.value = "";
+    per.addTodo($( "#todo" ).val());
+    $("#todo").val('');
 }

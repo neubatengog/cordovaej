@@ -53,7 +53,7 @@ per.deleteTodo = function(id) {
 per.refresh = function() {
     var renderTodo = function (row) {
         //console.log("<li><a href='#' onclick='per.deleteTodo(" + row.ID + ");'>" + row.todo + "</a></li>");
-        return  "<li><a href='javascript:void(0);' class='ui-btn' onclick='per.deleteTodo(" + row.ID + ");'> "+ row.todo + "</a></li>";
+        return  "<li data-icon='delete'><a href='javascript:void(0);' onclick='per.deleteTodo(" + row.ID + ");'> "+ row.todo + "</a></li>";
     }
     
     var render = function (tx, rs) {
@@ -63,6 +63,7 @@ per.refresh = function() {
             rowOutput += renderTodo(rs.rows.item(i));
         }
         todoItems.innerHTML =  rowOutput ;
+        $('#todoItems:visible').listview('refresh');
     }
     
     var db = per.db;
@@ -71,6 +72,7 @@ per.refresh = function() {
                       render, 
                       per.onError);
     });
+   
 }
       
 function init() {

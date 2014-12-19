@@ -20,7 +20,7 @@ function onError(error) {
 }
 
 function actualizaMapa(position){
-	console.log("google maps")
+	//console.log("google maps")
 	var longitud = position.coords.longitude;
 	var latitud = position.coords.latitude;
 	var latlong = new google.maps.LatLng(latitud, longitud);
@@ -35,13 +35,13 @@ function actualizaMapa(position){
             map: map,
            title: 'yo estoy aqui'
      });
-		
+	
 }
 
 function cambiarPosicionMarcador(position) {
      var latlong=new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
      marker.setPosition(latlong);
-     console.log(latlong);
+     //console.log(latlong);
 }
 
 navigator.geolocation.getCurrentPosition(actualizaMapa, onError);

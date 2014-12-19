@@ -135,18 +135,21 @@
             <a href="#principal" class="ui-btn ui-corner-all ui-shadow ui-icon-carat-l ui-btn-icon-left ui-btn-icon-notext"></a>
                 <h1>Persistencia SQLite</h1>
         </div><!-- /header -->
-                      <div  data-role="main" class ="ui-content">      
-                        <form >
-                        <div class="ui-field-contain">
-                            <input type="text"  id="todo" placeholder="agregar nuevo item...">
+                      <div  data-role="main" class ="ui-content">   
+                         <div class="ui-grid-solo">
+                            <div class="ui-block-a">   
+                                <div class="ui-field-contain">
+                                    <p><input type="text"  id="todo" placeholder="agregar nuevo item..."></p>
+                    
+                                    <p><a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left" id="addButton" onclick="addTodo(); return false;">Agregar</a></p>
+                                </div>
+                            </div>
                         </div>
-                            <button class="ui-btn ui-btn-inline" id="addButton" onclick="addTodo(); return false;">Agregar</button>
-                        </form> 
-                      </div>
                       <div  data-role="main" class ="ui-content">
-                            <h2>Listado de items</h2> 
+                            <h3>Listado de items</h3> 
                             <ul id="todoItems" data-role="listview" data-inset="true" ></ul>
                       </div>
+                    </div>
     </div><!-- /page -->
 
 <!--- /pagina persistencia-->    

@@ -1,3 +1,5 @@
+$('#mapa').height($(window).height() - (100 + $('[data-role=header]').height() - $('[data-role=footer]').height())); 
+
 var map;
 var marker;
 
@@ -41,6 +43,7 @@ function actualizaMapa(position){
 function cambiarPosicionMarcador(position) {
      var latlong=new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
      marker.setPosition(latlong);
+     map.setCenter(marker.getPosition());
      //console.log(latlong);
 }
 
